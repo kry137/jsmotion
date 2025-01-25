@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #container-follow-mouse>* {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SETIAP CHILD DARI ELEMEN BERKELAS container-follow-mouse AKAN MENGIKUTI MOUSE.
+        CHILD TERAKHIR AKAN MENJADI LAYER TERATAS. -->
+    <div id="container-follow-mouse">
+        <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+        <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+        <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+        <div style="background-color: rgb(233, 233, 233); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+    </div>
+</body>
+<script src="follow-mouse.js"></script>
+
+</html>
