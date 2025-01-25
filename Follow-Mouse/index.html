@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Follow</title>
+    <title>Follow-Mouse</title>
     <style>
         * {
             padding: 0;
@@ -12,16 +12,24 @@
             box-sizing: border-box;
         }
 
-        #container-follow-mouse>* {
+        .container-follow-mouse>* {
             position: absolute;
         }
     </style>
 </head>
 
 <body>
-    <!-- SETIAP CHILD DARI ELEMEN BERKELAS container-follow-mouse AKAN MENGIKUTI MOUSE.
+    <!-- SETIAP CHILD DARI ELEMEN BER-KELAS container-follow-mouse AKAN MENGIKUTI MOUSE.
         CHILD TERAKHIR AKAN MENJADI LAYER TERATAS. -->
-    <div id="container-follow-mouse">
+    <!-- data-flwmouse-defspeed AKAN MENGATUR KECEPATAN BASIS ELEMEN MENGEJAR MOUSE
+        data-flwmouse-speed AKAN MENGATUR KECEPATAN LAYER BAWAH MENGEJAR LAYER DIATASNYA -->
+    <div class="container-follow-mouse" data-flwmouse-defspeed="0.04" data-flwmouse-speed="0.5">
+        <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+        <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+        <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+        <div style="background-color: rgb(233, 233, 233); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+    </div>
+    <div class="container-follow-mouse" data-flwmouse-defspeed="0.01" data-flwmouse-speed="0.3">
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
