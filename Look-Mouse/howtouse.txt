@@ -1,0 +1,44 @@
+
+### Cara Menggunakan Skrip "Look Mouse"
+
+Skrip ini memungkinkan elemen-elemen di halaman web untuk mengikuti pergerakan mouse dengan animasi dinamis, serta memungkinkan pengaturan latar belakang, ukuran, skala, dan posisi elemen melalui atribut data custom.
+
+#### 1. Menambahkan HTML dan CSS
+
+Sebelum menggunakan skrip ini, pastikan elemen yang ingin diubah memiliki kelas `look-mouse` dan atribut `data-*` yang sesuai. Berikut adalah contoh HTML:
+
+```html
+<div id="look-mouse">
+    <div data-bgpic="path/to/your/image.jpg" data-size="50% 50%" data-bgsize="cover" data-followrate="0.05">
+        Content goes here
+    </div>
+    <img src="path/to/your/image.png" data-size="100vw 100vh" data-followrate="0.1" data-mirror>
+</div>
+```
+
+1. **`data-bgpic`**: Menetapkan gambar latar belakang untuk elemen.
+2. **`data-bgcolor`**: Menetapkan warna latar belakang untuk elemen.
+3. **`data-size`**: Menetapkan ukuran elemen dalam format `width height`. Gunakan `~` jika tidak ingin mengubah salah satu ukuran.
+4. **`data-bgsize`**: Menetapkan ukuran gambar latar belakang (`cover`, `contain`, dll.).
+5. **`data-scale`**: Menetapkan skala pada elemen. Elemen akan semakin besar jika nilai besar.
+6. **`data-followrate`**: Mengatur seberapa cepat elemen mengikuti gerakan mouse. Nilai yang lebih besar akan membuat elemen bergerak lebih cepat.
+7. **`data-followmax`**: Mengatur radius maksimal elemen dapat bergerak mengikuti gerakan mouse. Nilai dinyatakan dalam satuan pixel. Elemen akan berhenti mengikuti jika mencapai jarak maksimal.
+8. **`data-defaultposition`**: (Opsional) Atribut ini menyimpan posisi awal elemen sebelum elemen bergerak mengikuti gerakan mouse. Jika tidak didefinisikan, posisi awal akan dihitung secara otomatis oleh script. Kamu bisa mendeklarasikan nilai posisi ini secara manual jika ingin mengatur posisi awal elemen.
+
+#### 2. Menambahkan Skrip JavaScript
+
+Tambahkan skrip transformedit.js dan look-cursor.js di bagian bawah HTML mu, tepat sebelum/sesudah penutupan tag `</body>`.
+
+#### **3. Menambahkan CSS (Opsional)**
+
+Tambahkan CSS sesuai dengan kebutuhan desainmu, berikut adalah contoh pengaturan dasar:
+
+```css
+.look-mouse > * {
+    position: absolute;
+    transition: transform 0.1s ease;
+}
+```
+
+Dengan langkah-langkah ini, elemen-elemen di halaman web kamu akan dapat mengikuti pergerakan mouse secara dinamis dan fleksibel, sesuai dengan pengaturan `data-*` yang diberikan.
+

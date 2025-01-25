@@ -1,8 +1,13 @@
-let animationSpeed = 0.04; // Kecepatan gerak layer terdepan
-let animationSpeedOther = 0.5; // Kecepatan gerak layer belakang
 
 const containers = Array.from(document.getElementsByClassName("container-follow-mouse"));
-// const children = Array.from(container.children);
+
+// Atur container dan anakan langsungnya jadi Position:Absolut
+containers.forEach((container) => {
+  container.style.position = "absolute";
+  Array.from(container.children).forEach((child) => {
+    child.style.position = "absolute";
+  })
+});
 
 let lastMousex = 0;
 let lastMousey = 0;

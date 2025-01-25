@@ -11,11 +11,10 @@
             margin: 0;
         }
 
-        #look-mouse>* {
+        .look-mouse>* {
             position: absolute;
         }
 
-        /* YANG BODY INI BISA DIHAPUS */
         body {
             overflow: hidden;
             background-color: black;
@@ -24,11 +23,11 @@
 </head>
 
 <body>
-    <div id="look-mouse">
-        <div bgpic="pictures/background_0.webp" position="20vw -5vh" size="100vw 85vh" bgsize="40%" followrate="0.005">
+    <div class="look-mouse">
+        <div data-bgpic="pictures/background_0.webp" data-position="20vw -5vh" data-size="100vw 85vh" data-bgsize="40%" data-followrate="0.005">
         </div>
-        <img src="pictures/hallway-window.png" size="100vw 100vh" scale="1.4" followrate="0.027" mirror>
-    </div>
+        <img src="pictures/hallway-window.png" data-size="100vw 100vh" data-scale="1.4" data-followrate="0.027">
+    </div>    
 </body>
 <script>
 
@@ -38,13 +37,11 @@
         setInterval(function () {
             window.scrollTo(0, 0);
         }, 1000);
-    })
+    });
 
 </script>
 <!-- Function untuk mengedit nilai transform -->
-<script src="settranslate.js"></script> 
-<!-- Prepare pertama kali, mengaplikasikan efek custom atribut -->
-<script src="artibutes.js"></script>
+<script src="transformedit.js"></script> 
 <!-- Mengatur pergerakan elemen untuk mengikuti cursor -->
 <script src="look-cursor.js"></script>
 
