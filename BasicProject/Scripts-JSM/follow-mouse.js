@@ -1,18 +1,23 @@
 {
   const containers = Array.from(document.getElementsByClassName("container-follow-mouse"));
 
-  // Atur container dan anakan langsungnya jadi Position:Absolut
+  // Pengaturan awal
   containers.forEach((container) => {
+    // Ubah posisi parent menjadi absolute
     container.style.position = "absolute";
     Array.from(container.children).forEach((child) => {
+      // Ubah posisi Anakan menjadi absolute
       child.style.position = "absolute";
+      // Simpan posisi awal setiap anak
+      const rect = child.getBoundingClientRect();
+      child.setAttribute('data-flw-defposx', rect.x + window.scrollX)
+      child.setAttribute('data-flw-defposy', rect.y + window.scrollY)
     })
   });
 
+  // Nilai default untuk posisi mouse
   let lastMousex = 0;
   let lastMousey = 0;
-
-  // console.log(children);
 
   document.addEventListener("mousemove", function (mouse) {
     lastMousex = mouse.x;
@@ -36,26 +41,44 @@
       containers.forEach((container) => {
 
         const children = Array.from(container.children);
-
+        
         let childBefore; // Elemen anak terakhir yang sudah terpakai akan disimpan sementara disini
-
+        
         // Ambil informasi kecepatan yang ada di elemen induk
         let defmotionSpd = (container.getAttribute('data-flwmouse-defspeed') !== null) ?
-          container.getAttribute('data-flwmouse-defspeed') : 0;
+        container.getAttribute('data-flwmouse-defspeed') : 0;
         let motionSpd = (container.getAttribute('data-flwmouse-speed') !== null) ?
-          container.getAttribute('data-flwmouse-speed') : 0;
-
+        container.getAttribute('data-flwmouse-speed') : 0;
+        
+        // Apakah harus mengikuti mouse atau element lain
+        const isFollowOtherElement = container.hasAttribute('data-flwelement');
+        const theOtherElement = isFollowOtherElement && document.getElementById(container.getAttribute('data-flwelement'));
+        
+        // Perintah untuk setiap elemen anak
         for (let i = children.length; i > 0; i--) {
           let child = Array.from(children)[i - 1];
 
-          // // Mengambil kecepatan dari data yang disimpan di atribut
-          // const motionSpd = child
-
           // Menentukan arah dan kecepatan gerak
           let childBeforeDefined = (childBefore !== undefined);
-          let referencex = (childBeforeDefined) ? getOffset(childBefore, 0) : lastMousex;
-          let referencey = (childBeforeDefined) ? getOffset(childBefore, 1) : lastMousey;
           let speed = (childBeforeDefined) ? motionSpd : defmotionSpd;
+          let referencex, referencey;
+          if (childBeforeDefined) {
+            referencex = getOffset(childBefore, 0);
+            referencey = getOffset(childBefore, 1);
+          }
+          else if (isFollowOtherElement){
+            const targetRect = theOtherElement.getBoundingClientRect();
+            referencex = targetRect.x + targetRect.width/2;
+            referencey = targetRect.y + targetRect.height/2;
+          }
+          else{
+            referencex = lastMousex;
+            referencey = lastMousey;
+          }
+          
+          // Atur agar referensi sesuai dengan posisi awal elemen
+          if (!childBeforeDefined) referencex -=  parseFloat(child.getAttribute('data-flw-defposx'));
+          if (!childBeforeDefined) referencey -=  parseFloat(child.getAttribute('data-flw-defposy'));
 
           // Dapatkan selisih antara posisi elemen dengan mouse
           let posisix = getOffset(child, 0);
@@ -63,8 +86,8 @@
           let selisihx = posisix - referencex;
           let selisihy = posisiy - referencey;
 
-          let posx = posisix - selisihx * speed;
-          let posy = posisiy - selisihy * speed;
+          let posx = (posisix - selisihx * speed);
+          let posy = (posisiy - selisihy * speed);
 
           // Gerakkan
           child.style.transform = `translate(calc(-50% + ${posx + "px"}), calc(-50% + ${posy + "px"}))`;

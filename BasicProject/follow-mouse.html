@@ -18,14 +18,17 @@
     <!-- SETIAP CHILD DARI ELEMEN BER-KELAS container-follow-mouse AKAN MENGIKUTI MOUSE.
         CHILD TERAKHIR AKAN MENJADI LAYER TERATAS. -->
     <!-- data-flwmouse-defspeed AKAN MENGATUR KECEPATAN BASIS ELEMEN MENGEJAR MOUSE
-        data-flwmouse-speed AKAN MENGATUR KECEPATAN LAYER BAWAH MENGEJAR LAYER DIATASNYA -->
+        data-flwmouse-speed AKAN MENGATUR KECEPATAN LAYER BAWAH MENGEJAR LAYER DIATASNYA 
+        data-flwelement AKAN MENGATUR ELEMEN UNTUK MENGEJAR ELEMEN LAIN (BERDASARKAN ID) ALIH-ALIH MENGEJAR MOUSE --->
     <div class="container-follow-mouse" data-flwmouse-defspeed="0.04" data-flwmouse-speed="0.5">
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
-        <div style="background-color: rgb(233, 233, 233); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
+        <div id="followed-cube" style="background-color: rgb(233, 233, 233); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
     </div>
-    <div class="container-follow-mouse" data-flwmouse-defspeed="0.01" data-flwmouse-speed="0.3">
+
+    <!-- Karena diberi 'data-flwelement' dia akan mengikuti #followed-cube -->
+    <div class="container-follow-mouse" data-flwelement="followed-cube" data-flwmouse-defspeed="0.03" data-flwmouse-speed="0.3">
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
         <div style="background-color: rgb(200, 200, 200); border: solid 2px rgb(180, 180, 180); width: 100px; height: 100px"></div>
