@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotate to Mouse</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .rotate-mouse{
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Setiap elemen yang memiliki kelas rotate-mouse akan berotasi mengikuti arah mouse -->
+    <!-- Atribut data-maxrotation digunakan untuk mengaplikasikan rotasi maksimal pada setiap framenya -->
+    <div class="rotate-mouse" data-maxrotation="3" style="position: absolute; top: 50%; left: 20%; transform: translate(-50%, -50%); font-size: 3em;">&rarr;</div>
+    <div class="rotate-mouse" data-maxrotation="6" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3em;">&rarr;</div>
+    <div class="rotate-mouse" data-maxrotation="3" style="position: absolute; top: 50%; left: 80%; transform: translate(-50%, -50%); font-size: 3em;">&rarr;</div>
+</body>
+<!-- Function untuk mengedit nilai transform -->
+<script src="Scripts-JSM/transformedit.js"></script>
+<!-- Script rotasi elemen -->
+<script src="Scripts-JSM/rotate-mouse.js"></script>
+
+</html>
